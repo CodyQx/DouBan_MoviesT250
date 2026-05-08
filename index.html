@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Douban Top250 Browser</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@1.1.3/dist/echarts-wordcloud.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>豆瓣Top250 浏览器</h1>
+    <div class="controls">
+      <input id="search" placeholder="搜索：片名/导演/演员">
+      <label for="sort" class="sr-only">排序方式</label>
+      <select id="sort">
+        <option value="">默认排序</option>
+        <option value="rating">按评分</option>
+        <option value="year">按年份</option>
+      </select>
+      <button id="searchBtn">搜索</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="left">
+      <div id="movies" class="grid"></div>
+      <div class="pagination">
+        <button id="prev">上一页</button>
+        <span id="pageInfo"></span>
+        <button id="next">下一页</button>
+      </div>
+    </section>
+
+    <aside class="right">
+      <div id="wordcloud" class="card"></div>
+      <div id="chart" class="card"></div>
+    </aside>
+  </main>
+
+  <template id="cardTpl">
+    <div class="card movie-card">
+      <div class="poster">海报</div>
+      <div class="info">
+        <h3 class="title"></h3>
+        <div class="meta"></div>
+        <div class="tags"></div>
+      </div>
+    </div>
+  </template>
+
+  <div id="detailModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeDetail">返回</button>
+      <div id="detail"></div>
+      <h3>短评（前20条）</h3>
+      <ul id="comments"></ul>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
